@@ -1,9 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, Link, hashHistory } from 'react-router'
+import { Router, Route, Redirect, IndexRoute, browserHistory, hashHistory } from 'react-router'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { Provider, connect } from 'react-redux';
 import "./app.less";
 import Hello from "./components/hello/hello"
 import Login from "./components/login/login"
+
+const history=hashHistory;
 
 export default class App extends React.Component{
     constructor(props){
@@ -16,7 +20,7 @@ export default class App extends React.Component{
         console.log(event.target.value);
     }
     login(){
-        hashHistory.push('login')
+        history.push('login')
     }
     render(){
         return ( 
@@ -29,8 +33,12 @@ export default class App extends React.Component{
     }
 }
 render(
-  <Router history={hashHistory}>
-    <Route path="/" component={App} />
-    <Route path="login" component={Login} />
-  </Router>
+<Provider>
+    <Router history={history}>
+        <Route path="/">
+            <IndexRoute component={App}/>
+            <Route path="login" component={Login} />
+        </Route>
+    </Router>
+</Provider>
 , document.getElementById('root'));
