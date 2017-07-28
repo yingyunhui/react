@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import "./app.less";
 import Hello from "./components/hello/hello"
 import Login from "./components/login/login"
-import reducer from './reducers';
+import rootReducer from './reducers/root';
 
 /*
 export default class App extends React.Component{
@@ -14,7 +14,7 @@ export default class App extends React.Component{
 */
 
 const history=hashHistory;
-const store=createStore(reducer);
+const store=createStore(rootReducer);
 
 render(
 <Provider store={store}>
