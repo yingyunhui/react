@@ -9,12 +9,14 @@ export default class App extends React.Component{
     constructor(props){
         super(props);
         this.state={account:"",password:""}
-        this.handleChange=(event)=>{
-            console.log(event.target.value);
-        }
-        this.login=()=>{
-            hashHistory.push('login')
-        }
+        this.handleChange=this.handleChange.bind(this);
+        this.login=this.login.bind(this);
+    }
+    handleChange(event){
+        console.log(event.target.value);
+    }
+    login(){
+        hashHistory.push('login')
     }
     render(){
         return ( 
@@ -28,7 +30,7 @@ export default class App extends React.Component{
 }
 render(
   <Router history={hashHistory}>
-    <Route path="/" component={App}/>
-    <Route path="/login" component={Login} />
+    <Route path="/" component={App} />
+    <Route path="login" component={Login} />
   </Router>
 , document.getElementById('root'));
