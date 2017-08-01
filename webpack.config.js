@@ -19,6 +19,10 @@ module.exports = {
       test: /\.less$/, 
       loader: 'style-loader!css-loader!less-loader'
     },
+    {
+　　　 test: /\.(png|jpg|gif)$/,
+　　　 loader: 'url-loader?limit=8192&name=assets/images/[name].[ext]'
+　　}
     ]
   },
   devServer:{
