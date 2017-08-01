@@ -9,7 +9,7 @@ export default class Hello extends React.Component{
             console.log(data)
         });
         return (
-            <div className="hello">Hello World!
+            <div className="hello">Hello World!<br/>
                 <Link to="/login">login</Link>
             </div>
         );
