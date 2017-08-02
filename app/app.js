@@ -13,7 +13,7 @@ export default class App extends React.Component{
 }
 */
 
-const history=browserHistory;
+const history=hashHistory;
 const store=createStore(reducer);
 
 render(

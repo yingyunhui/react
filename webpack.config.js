@@ -1,4 +1,6 @@
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
   entry: path.resolve(__dirname, 'app/app.js'),
   output: {
@@ -15,9 +17,18 @@ module.exports = {
         presets: ['es2015','react']
       }
     },
+    /*css in html
     {
       test: /\.less$/, 
       loader: 'style-loader!css-loader!less-loader'
+    },
+    */
+    {
+        test: /\.less$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'less-loader']
+        })
     },
     {
 　　　 test: /\.(png|jpg|gif)$/,
@@ -25,6 +36,9 @@ module.exports = {
 　　}
     ]
   },
+  plugins:[
+    new ExtractTextPlugin('styles.css')
+  ],
   devServer:{
       port:8888,
       proxy: {  
