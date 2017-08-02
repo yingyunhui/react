@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');//用来分离打包css
+var HtmlWebpackPlugin = require('html-webpack-plugin'); //用来生成html
 
 module.exports = {
   entry: {
@@ -46,7 +47,13 @@ module.exports = {
     //css打包文件
     new ExtractTextPlugin('styles.css'),
     //公有方法独立打包
-    new webpack.optimize.CommonsChunkPlugin({name:"common", filename:"common.bundle.js"})
+    new webpack.optimize.CommonsChunkPlugin({name:"common", filename:"common.bundle.js"}),
+    //生成入口网页
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: path.resolve(__dirname, 'app/app.html'),
+      hash:true
+    })
   ],
   devServer:{
       //webpack服务器设置，端口
