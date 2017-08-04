@@ -8,6 +8,7 @@ import reducer from './reducers/index';
 import Frame from "./components/frame/frame";
 import Hello from "./components/hello/hello";
 import Server from "./components/server/server";
+import "./app.less"
 
 const history=hashHistory;
 const store=createStore(reducer);
@@ -18,7 +19,7 @@ render(
         <Route path="/" component={Frame}>
             <IndexRoute component={Hello}/>
             <Route path="server" component={Server}>
-                
+
             </Route>
         </Route>
     </Router>

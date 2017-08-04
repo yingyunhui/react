@@ -22,7 +22,9 @@ module.exports = {
       query: {
         presets: ['es2015','react'],
         //antd的按需加载插件babel-plugin-import,style为true则用less
-        plugins: [["import", { "libraryName": "antd", "style": "css" }]]
+        plugins: [
+          ["import", { "libraryName": "antd", "style": "css"}]
+        ]
       }
     },
     /*css可以分为两种方式：通过js直接嵌入html
