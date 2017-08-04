@@ -1,0 +1,70 @@
+html,body{
+    padding:0;
+    margin:0;
+    width:100%;
+    height:100%;
+    font-family: "Microsoft YaHei";
+}
+#root{
+    width:100%;
+    height:100%;
+}
+.frame{
+    width:100%;
+    height:100%;
+}
+.navbar{
+    width:100%;
+    height:40px;
+    background-color: #000;
+    color:#fff;
+    position: fixed;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    a{
+        color:#fff;
+        text-decoration: none;
+        margin:0px 10px;
+    }
+    a:hover{
+        color:#FF9900;
+    }
+    .logo{
+        background-image:url(../../assets/images/jigsaw-logo.png);
+        height: 23.3px;
+        width: 36px;
+        background-size: cover;
+        margin:0 10px 0 10px;
+    }
+    .info{
+        text-align: right;
+        margin-right: 10px;
+        font-size:14px;
+        flex-grow: 1;
+    }
+}
+.midbar{
+    width:100%;
+    height:100%;
+    box-sizing: border-box;
+    padding:40px 0px 30px 0px;
+}
+.footbar{
+    width:100%;
+    height:30px;
+    background-color: #000;
+    color:#fff;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    font-size:12px;
+    span{
+        margin:0px 20px;
+    }
+    :nth-child(2){
+        color:#999;
+    }
+}

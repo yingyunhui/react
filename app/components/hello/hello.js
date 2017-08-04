@@ -1,17 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router';
-import styles from "./hello.less"
+import "./hello.less"
 import $ from 'jquery'
+import {Button} from 'antd'
 
 export default class Hello extends React.Component{
     render(){
-        $.get("/api/",{},function(data){
-            console.log(data)
-        });
         return (
-            <div className="hello">Hello World!<br/>
-                <Link to="/login">login</Link>
-            </div>
+           <div className="hello">Hello World!
+               <Button>Hello world!</Button>
+           </div>
         );
     }
 }

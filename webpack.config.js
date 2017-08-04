@@ -6,7 +6,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin'); //用来生成html
 module.exports = {
   entry: {
     app: path.resolve(__dirname, 'app/app.js'),
-    common:['react','react-dom','react-router','redux','react-redux','jquery']
+    vendor:['react','react-dom','react-router','redux','react-redux','jquery']
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -20,7 +20,9 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel-loader',
       query: {
-        presets: ['es2015','react']
+        presets: ['es2015','react'],
+        //antd的按需加载插件babel-plugin-import,style为true则用less
+        plugins: [["import", { "libraryName": "antd", "style": "css" }]]
       }
     },
     /*css可以分为两种方式：通过js直接嵌入html
@@ -30,6 +32,13 @@ module.exports = {
     },
     另一种如下，将css打包成一个文件再引用*/
     {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader']
+        })
+    },
+    {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -38,7 +47,7 @@ module.exports = {
     },
     //图片之类的文件进行处理和保存
     {
-　　　 test: /\.(png|jpg|gif)$/,
+　　　 test: /\.(png|jpg|gif|ico)$/,
 　　　 loader: 'url-loader?limit=8192&name=assets/images/[name].[ext]'
 　　}
     ]
@@ -47,7 +56,7 @@ module.exports = {
     //css打包文件
     new ExtractTextPlugin('styles.css'),
     //公有方法独立打包
-    new webpack.optimize.CommonsChunkPlugin({name:"common", filename:"common.bundle.js"}),
+    new webpack.optimize.CommonsChunkPlugin({name:"vendor", filename:"vendor.bundle.js"}),
     //生成入口网页
     new HtmlWebpackPlugin({
       filename: 'index.html',

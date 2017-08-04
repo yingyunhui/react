@@ -9,7 +9,7 @@ export default class Slidebar extends React.Component{
     render(){
         return (
             <div className="slidebar">
-                slidebar
+                
             </div>
         )
     }
