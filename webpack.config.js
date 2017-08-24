@@ -23,7 +23,8 @@ module.exports = {
         presets: ['es2015','react'],
         //antd的按需加载插件babel-plugin-import,style为true则用less
         plugins: [
-          ["import", { "libraryName": "antd", "style": "css"}]
+          ["import", { "libraryName": "antd", "style": "css"}],
+          "transform-runtime"
         ]
       }
     },

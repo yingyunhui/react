@@ -40,7 +40,7 @@ function mapStateToProps(state) {
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    action: () => dispatch({type:'increase'})
+    action: () => dispatch({type:'saga_increase'})
   }
 }
 
