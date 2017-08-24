@@ -16,13 +16,14 @@ class Login extends React.Component{
     }
     */
     render(){
-        const {count,Action}=this.props;
+        const {count,action}=this.props;
+        console.log(this.props);
         return ( 
             <div>
-                <input type="text" placeholder="账号" onChange={Action}/><br/>
+                <input type="text" placeholder="账号" onChange={action}/><br/>
                 <input type="text" placeholder="密码" /><br/>
                 <button >登录</button>
-                <div>{count}2</div>
+                <div>{count}</div>
             </div>
         );
     }
@@ -30,16 +31,16 @@ class Login extends React.Component{
 
 // Map Redux state to component props
 function mapStateToProps(state) {
-  return {
-    count: state.count
-  }
+    let {login}=state;
+    return {
+        count:login.count
+    }
 }
 
-const Action1 = { type: 'increase' }
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    Action: () => dispatch(Action1)
+    action: () => dispatch({type:'increase'})
   }
 }
 
